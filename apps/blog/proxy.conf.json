@@ -1,6 +1,14 @@
 {
-  "/api": {
-    "target": "http://localhost:3333",
+  "/posts-service": {
+    "target": "http://localhost:4000",
+    "secure": false
+  },
+  "/comments-service": {
+    "target": "http://localhost:4001",
+    "secure": false
+  },
+  "/query-service": {
+    "target": "http://localhost:4002",
     "secure": false
   }
 }

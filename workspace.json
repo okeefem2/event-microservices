@@ -192,6 +192,291 @@
           }
         }
       }
+    },
+    "posts-service": {
+      "root": "apps/posts-service",
+      "sourceRoot": "apps/posts-service/src",
+      "projectType": "application",
+      "prefix": "posts-service",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/posts-service",
+            "main": "apps/posts-service/src/main.ts",
+            "tsConfig": "apps/posts-service/tsconfig.app.json",
+            "assets": ["apps/posts-service/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/posts-service/src/environments/environment.ts",
+                  "with": "apps/posts-service/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "posts-service:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/posts-service/.eslintrc",
+            "tsConfig": [
+              "apps/posts-service/tsconfig.app.json",
+              "apps/posts-service/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/posts-service/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/posts-service/jest.config.js",
+            "tsConfig": "apps/posts-service/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "comments-service": {
+      "root": "apps/comments-service",
+      "sourceRoot": "apps/comments-service/src",
+      "projectType": "application",
+      "prefix": "comments-service",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/comments-service",
+            "main": "apps/comments-service/src/main.ts",
+            "tsConfig": "apps/comments-service/tsconfig.app.json",
+            "assets": ["apps/comments-service/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/comments-service/src/environments/environment.ts",
+                  "with": "apps/comments-service/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "comments-service:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/comments-service/.eslintrc",
+            "tsConfig": [
+              "apps/comments-service/tsconfig.app.json",
+              "apps/comments-service/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/comments-service/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/comments-service/jest.config.js",
+            "tsConfig": "apps/comments-service/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "event-bus": {
+      "root": "apps/event-bus",
+      "sourceRoot": "apps/event-bus/src",
+      "projectType": "application",
+      "prefix": "event-bus",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/event-bus",
+            "main": "apps/event-bus/src/main.ts",
+            "tsConfig": "apps/event-bus/tsconfig.app.json",
+            "assets": ["apps/event-bus/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/event-bus/src/environments/environment.ts",
+                  "with": "apps/event-bus/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "event-bus:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/event-bus/.eslintrc",
+            "tsConfig": [
+              "apps/event-bus/tsconfig.app.json",
+              "apps/event-bus/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/event-bus/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/event-bus/jest.config.js",
+            "tsConfig": "apps/event-bus/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "query-service": {
+      "root": "apps/query-service",
+      "sourceRoot": "apps/query-service/src",
+      "projectType": "application",
+      "prefix": "query-service",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/query-service",
+            "main": "apps/query-service/src/main.ts",
+            "tsConfig": "apps/query-service/tsconfig.app.json",
+            "assets": ["apps/query-service/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/query-service/src/environments/environment.ts",
+                  "with": "apps/query-service/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "query-service:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/query-service/.eslintrc",
+            "tsConfig": [
+              "apps/query-service/tsconfig.app.json",
+              "apps/query-service/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/query-service/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/query-service/jest.config.js",
+            "tsConfig": "apps/query-service/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "moderation-service": {
+      "root": "apps/moderation-service",
+      "sourceRoot": "apps/moderation-service/src",
+      "projectType": "application",
+      "prefix": "moderation-service",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/moderation-service",
+            "main": "apps/moderation-service/src/main.ts",
+            "tsConfig": "apps/moderation-service/tsconfig.app.json",
+            "assets": ["apps/moderation-service/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/moderation-service/src/environments/environment.ts",
+                  "with": "apps/moderation-service/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "moderation-service:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/moderation-service/.eslintrc",
+            "tsConfig": [
+              "apps/moderation-service/tsconfig.app.json",
+              "apps/moderation-service/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/moderation-service/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/moderation-service/jest.config.js",
+            "tsConfig": "apps/moderation-service/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

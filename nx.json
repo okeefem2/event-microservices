@@ -31,6 +31,21 @@
     },
     "api-interfaces": {
       "tags": []
+    },
+    "posts-service": {
+      "tags": []
+    },
+    "comments-service": {
+      "tags": []
+    },
+    "event-bus": {
+      "tags": []
+    },
+    "query-service": {
+      "tags": []
+    },
+    "moderation-service": {
+      "tags": []
     }
   }
 }

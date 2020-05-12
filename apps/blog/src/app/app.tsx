@@ -1,25 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { Message } from '@microservices/api-interfaces';
-
+import React from 'react';
+import PostCreate from './post-create/post-create';
+import './app.scss';
+import PostList from './post-list/post-list';
 export const App = () => {
-  const [m, setMessage] = useState<Message>({ message: '' });
-
-  useEffect(() => {
-    fetch('/api')
-      .then(r => r.json())
-      .then(setMessage);
-  }, []);
-
   return (
     <>
       <div style={{ textAlign: 'center' }}>
-        <h1>Welcome to blog!</h1>
-        <img
-          width="450"
-          src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png"
-        />
+        <h1>Create Post</h1>
+        <PostCreate/>
+        <hr />
+        <h1>Posts</h1>
+        <PostList />
       </div>
-      <div>{m.message}</div>
     </>
   );
 };
