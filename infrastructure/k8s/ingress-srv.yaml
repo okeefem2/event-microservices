@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-srv
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+    - host: posts.com
+      http:
+        paths:
+          - path: /posts-service
+            backend:
+              serviceName: posts-service-internal
+              servicePort: 4000
+          - path: /comments-service
+            backend:
+              serviceName: comments-service-internal
+              servicePort: 4001x
+          - path: /query-service
+            backend:
+              serviceName: query-service-internal
+              servicePort: 4002
+          - path: /moderation-service
+            backend:
+              serviceName: moderation-service-internal
+              servicePort: 4003
+          - path: /event-bus
+            backend:
+              serviceName: event-bus
+              servicePort: 4005

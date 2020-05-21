@@ -1,0 +1,65 @@
+version: '3.4'
+services:
+  event-bus:
+    image: okeefem/event-bus
+    container_name: event-bus
+    build:
+        context: .
+        target: event-bus
+    ports:
+      - 4005:4005
+    networks:
+        microservices_blog:
+  posts-service:
+    image: okeefem/posts-service
+    container_name: posts-service
+    build:
+        context: .
+        target: posts-service
+    depends_on:
+      - event-bus
+    networks:
+        microservices_blog:
+  comments-service:
+    image: okeefem/comments-service
+    container_name: comments-service
+    build:
+        context: .
+        target: comments-service
+    depends_on:
+      - event-bus
+    networks:
+        microservices_blog:
+  query-service:
+    image: okeefem/query-service
+    container_name: query-service
+    build:
+        context: .
+        target: query-service
+    depends_on:
+      - event-bus
+    networks:
+        microservices_blog:
+  moderation-service:
+    image: okeefem/moderation-service
+    container_name: moderation-service
+    build:
+        context: .
+        target: moderation-service
+    depends_on:
+      - event-bus
+    networks:
+        microservices_blog:
+  blog:
+    image: okeefem/blog
+    container_name: blog
+    restart: always
+    build:
+        context: .
+        target: blog
+    ports:
+      - 4200:80
+    networks:
+      microservices_blog:
+networks:
+    microservices_blog:

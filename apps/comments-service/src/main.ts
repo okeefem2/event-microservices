@@ -25,7 +25,7 @@ router.post('/posts/:postId/comments', async (req, res) => {
   comments.push(comment)
 
   commentsByPostId[postId] = comments;
-  await axios.post('http://localhost:4005/events', {
+  await axios.post('http://event-bus:4005/events', {
     type: 'CommentCreated',
     data: { ...comment, postId },
   });
@@ -43,7 +43,7 @@ router.post('/events', async (req, res) => {
     const comments = commentsByPostId[data.postId];
     const comment = comments.find(c => data.id === c.id);
     comment.status = data.status;
-    await axios.post('http://localhost:4005/events', {
+    await axios.post('http://event-bus:4005/events', {
     type: 'CommentUpdated',
     data: { ...comment, postId: data.postId },
   });

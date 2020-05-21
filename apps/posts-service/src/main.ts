@@ -20,14 +20,16 @@ router.post('/', async (req, res) => {
   const { title } = req.body;
   const post = { id, title }
   posts[id] = post;
-  await axios.post('http://localhost:4005/events', {
+  // With docker compose/nginx or kubernetes as long as clusterip service is
+  // names event-bus
+  await axios.post('http://event-bus:4005/events', { // ' with just /events I get a connection refused on port 80....
     type: 'PostCreated',
     data: post,
   });
   return res.status(201).send(posts[id]);
 });
 
-router.post('/events', async (req, res) => {
+router.post('http://event-bus:4005/events', async (req, res) => {
   console.log('received event', req.body);
 
   return res.send();

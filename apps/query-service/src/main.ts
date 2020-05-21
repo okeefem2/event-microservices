@@ -44,7 +44,8 @@ const port = process.env.port || 4002;
 const server = app.listen(port, async () => {
   console.log(`Listening at http://localhost:${port}${baseRoute}`);
 
-  const res = await axios.get('http://localhost:4005/events');
+  console.log('Checking events!');
+  const res = await axios.get('http://event-bus:4005/events');
 
   // Replay all events on server startup
   for (const event of res.data) {

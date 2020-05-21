@@ -13,3 +13,33 @@ generate react component nx generate @nrwl/react:component comment-list --projec
 Adding bulma
 
 npm i bulma
+
+docker exec -it posts-service /bin/bash to check what's going on inside the container
+
+https://dev.to/martzcodes/migrating-full-stack-apps-from-poly-repo-to-mono-repo-17go#dockerfile
+
+
+k8s
+
+services handle requests between and to pods
+Cluster IP services are for communications in the cluster
+Load Balancer is for communications outside the cluster (Node port also, but that is more for development)
+
+posts-service 31939
+http://localhost:31939/posts-service
+
+
+rolling out updates in k8s
+k rollout restart deployment event-bus-depl
+
+curl -X POST http://localhost:32198/posts-service -d '{"title": "Test Post"}' -H "Content-Type: application/json"
+
+curl -X POST http://localhost:32608/comments-service/posts/bd974191/comments -d '{"content": "First Comment"}' -H "Content-Type: application/json"
+
+curl -X GET http://localhost:30433/query-service/posts
+
+ingress-nginx:
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-0.32.0/deploy/static/provider/cloud/deploy.yaml
+
+creates a load balancer and ingress controler for routing to pods

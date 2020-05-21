@@ -21,10 +21,12 @@ router.post('/', (req, res) => {
   const event = req.body;
   events.push(event);
   console.log(events);
-  axios.post('http://localhost:4000/posts-service/events', event);
-  axios.post('http://localhost:4001/comments-service/events', event);
-  axios.post('http://localhost:4002/query-service/events', event);
-  axios.post('http://localhost:4003/moderation-service/events', event);
+  // This works for docker compose with nginx, but k8s requires different names for clusterIP vs nodeport...
+  // axios.post('http://posts-service:4000/posts-service/events', event);
+  axios.post('http://posts-service-internal:4000/posts-service/events', event);
+  axios.post('http://comments-service:4001/comments-service/events', event);
+  axios.post('http://query-service:4002/query-service/events', event);
+  axios.post('http://moderation-service:4003/moderation-service/events', event);
   res.status(201).send();
 });
 
