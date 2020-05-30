@@ -4,6 +4,7 @@ metadata:
   name: ingress-srv
   annotations:
     kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
   rules:
     - host: posts.com
@@ -16,7 +17,7 @@ spec:
           - path: /comments-service
             backend:
               serviceName: comments-service-internal
-              servicePort: 4001x
+              servicePort: 4001
           - path: /query-service
             backend:
               serviceName: query-service-internal
@@ -29,3 +30,7 @@ spec:
             backend:
               serviceName: event-bus
               servicePort: 4005
+          - path: /?(.*)
+            backend:
+              serviceName: blog
+              servicePort: 80

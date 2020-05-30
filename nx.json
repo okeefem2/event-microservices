@@ -26,12 +26,6 @@
       "tags": [],
       "implicitDependencies": ["blog"]
     },
-    "api": {
-      "tags": []
-    },
-    "api-interfaces": {
-      "tags": []
-    },
     "posts-service": {
       "tags": []
     },

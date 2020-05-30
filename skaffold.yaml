@@ -1,0 +1,58 @@
+apiVersion: skaffold/v2alpha3
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./infrastructure/k8s/*
+build:
+  local:
+    push: false
+  artifacts:
+    - image: okeefem/blog
+      context: .
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'dist/apps/blog/*'
+            dest: .
+    - image: okeefem/posts-service
+      context: .
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'dist/apps/posts-service/*'
+            dest: .
+    - image: okeefem/comments-service
+      context: .
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'dist/apps/comments-service/*'
+            dest: .
+    - image: okeefem/query-service
+      context: .
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'dist/apps/query-service/*'
+            dest: .
+    - image: okeefem/moderation-service
+      context: .
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'dist/apps/moderation-service/*'
+            dest: .
+    - image: okeefem/event-bus
+      context: .
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'dist/apps/event-bus/*'
+            dest: .

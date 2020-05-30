@@ -2,10 +2,12 @@ node_modules
 coverage
 docker
 tools
-Dockerfile*
+*Dockerfile*
 README.md
 LICENSE
 .vscode
 .dockerignore
 .git
 .gitignore
+infrastructure/**
+skaffold.yaml

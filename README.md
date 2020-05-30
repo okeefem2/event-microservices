@@ -43,3 +43,15 @@ ingress-nginx:
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-0.32.0/deploy/static/provider/cloud/deploy.yaml
 
 creates a load balancer and ingress controler for routing to pods
+k rollout restart service -f infrastructure/k8s/*.yaml
+ingress needs to just be reapplied I believe
+k apply -f infrastructure/k8s/ingress-srv.yaml
+
+dev automation - skaffold
+brew install skaffold
+
+nx run-many --target=build --all --watch --parallel --maxParallel=6
+
+this will build and watch all apps, skaffold is set to watch these and swap out changes into individual images or rebuild if needed
+
+skaffold dev
