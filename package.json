@@ -27,7 +27,7 @@
   },
   "private": true,
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^1.8.2",
     "bulma": "^0.8.2",
     "document-register-element": "1.13.1",
     "express": "4.17.1",
